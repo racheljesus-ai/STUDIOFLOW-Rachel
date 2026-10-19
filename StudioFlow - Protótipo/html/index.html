@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudioFlow - DAW & Dashboard Interativo</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link  rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <div class="topbar">
+        <div class="topbar-container">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
+                <div>
+                    <span class="logo-text">StudioFlow</span>
+                    <span class="logo-subtext">DAW Web v1.0</span>
+                </div>
+            </div>
+
+            <div class="nav-area">
+                <button onclick="switchView('dashboard')" id="nav-dashboard" class="nav-btn active">
+                    <i class="fa-solid fa-chart-pie"></i> 1. Dashboard
+                </button>
+                <button onclick="switchView('studio')" id="nav-studio" class="nav-btn">
+                    <i class="fa-solid fa-compact-disc"></i> 2. Estúdio DAW
+                </button>
+                <button onclick="openExportModal()" class="nav-btn">
+                    <i class="fa-solid fa-file-export"></i> 3. Exportar Áudio
+                </button>
+            </div>
+
+            <div class="profile-area">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Perfil" class="avatar">
+                <div class="profile-info">
+                    <span class="profile-name">Ana Silva</span>
+                    <span class="profile-role">Produtora</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="main-content">
+
+        <!-- DASHBOARD -->
+        <div id="view-dashboard" class="view-panel">
+            <div class="banner">
+                <div class="banner-text">
+                    <span class="badge">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Bem-vinda de volta
+                    </span>
+                    <div class="banner-title">Os Seus Projetos Musicais</div>
+                    <div class="banner-desc">Continue de onde parou ou inicie uma nova sessão multifaixa no estúdio virtual.</div>
+                </div>
+
+                <button onclick="switchView('studio')" class="btn-primary">
+                    <i class="fa-solid fa-circle-plus"></i> + Criar Novo Projeto
+                </button>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label"><i class="fa-solid fa-folder text-purple"></i> Projetos Ativos</div>
+                    <div class="metric-value">12</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label"><i class="fa-solid fa-microphone text-green"></i> Faixas Gravadas</div>
+                    <div class="metric-value">48</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label"><i class="fa-solid fa-clock text-amber"></i> Horas no Estúdio</div>
+                    <div class="metric-value">36.5h</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label"><i class="fa-solid fa-cloud-arrow-up text-blue"></i> Armazenamento</div>
+                    <div class="metric-value">4.2 GB</div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i class="fa-solid fa-clock-rotate-left text-purple"></i> Projetos Recentes
+                    </div>
+                    <span class="section-subtitle">A mostrar 3 de 12</span>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card" onclick="switchView('studio')">
+                        <div class="project-body">
+                            <div class="project-top">
+                                <span class="tag tag-purple">120 BPM</span>
+                                <span class="project-time">Há 2 horas</span>
+                            </div>
+                            <div class="project-name">Trap Beat Guia #01</div>
+                            <div class="project-desc">Arranjo principal de bateria eletrónica com synth de acompanhamento e voz guia.</div>
+                        </div>
+                        <div class="project-footer">
+                            <span><i class="fa-solid fa-layer-group text-purple"></i> 3 Faixas</span>
+                            <span class="link-btn">Abrir no DAW <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="switchView('studio')">
+                        <div class="project-body">
+                            <div class="project-top">
+                                <span class="tag tag-amber">95 BPM</span>
+                                <span class="project-time">Ontem</span>
+                            </div>
+                            <div class="project-name">Acústico Guitarra & Voz</div>
+                            <div class="project-desc">Captação com microfone condensador numa sala tratada acusticamente.</div>
+                        </div>
+                        <div class="project-footer">
+                            <span><i class="fa-solid fa-layer-group text-purple"></i> 2 Faixas</span>
+                            <span class="link-btn">Abrir no DAW <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="switchView('studio')">
+                        <div class="project-body">
+                            <div class="project-top">
+                                <span class="tag tag-green">128 BPM</span>
+                                <span class="project-time">Há 5 dias</span>
+                            </div>
+                            <div class="project-name">Synthwave Retro Drive</div>
+                            <div class="project-desc">Sintetizadores virtuais analógicos com bassline ritmado dos anos 80.</div>
+                        </div>
+                        <div class="project-footer">
+                            <span><i class="fa-solid fa-layer-group text-purple"></i> 5 Faixas</span>
+                            <span class="link-btn">Abrir no DAW <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ESTÚDIO DAW -->
+        <div id="view-studio" class="view-panel hidden">
+            <div class="daw-controls">
+                <div class="daw-title-area">
+                    <button onclick="switchView('dashboard')" class="btn-icon" title="Voltar ao Dashboard">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <div>
+                        <input type="text" value="Trap Beat Guia #01" class="daw-input-title">
+                        <span class="daw-subtitle">Projeto guardado automaticamente</span>
+                    </div>
+                </div>
+
+                <div class="bpm-panel">
+                    <div class="bpm-item">
+                        <span>BPM:</span>
+                        <input id="bpm-input" type="number" min="40" max="240" value="120" class="bpm-input">
+                    </div>
+                    <div class="divider"></div>
+                    <span class="time-sig">4/4</span>
+                    <div class="divider"></div>
+                    <button id="btn-metronome" onclick="toggleMetronome()" class="btn-metro">
+                        <i class="fa-solid fa-stopwatch"></i> Metrónomo
+                    </button>
+                </div>
+
+                <button onclick="openExportModal()" class="btn-primary">
+                    <i class="fa-solid fa-file-export"></i> Exportar Áudio
+                </button>
+            </div>
+
+            <div class="tracks-container">
+                <div class="track-row">
+                    <div class="track-info">
+                        <div class="track-title-block">
+                            <span class="track-title">
+                                <span class="dot bg-purple"></span> Voz Principal (Mic)
+                            </span>
+                            <span class="track-sub">ENTRADA 1 - MONO</span>
+                        </div>
+                        <div class="track-buttons">
+                            <button onclick="toggleMute(this)" class="btn-track btn-mute">M</button>
+                            <button onclick="toggleSolo(this)" class="btn-track btn-solo">S</button>
+                        </div>
+                        <div class="vol-slider">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <input type="range" min="0" max="100" value="80">
+                        </div>
+                    </div>
+                    <div class="waveform-box">
+                        <div class="waveform-container">
+                            <div class="wave-bar bg-purple" style="height: 40%"></div>
+                            <div class="wave-bar bg-purple" style="height: 70%"></div>
+                            <div class="wave-bar bg-purple" style="height: 90%"></div>
+                            <div class="wave-bar bg-purple" style="height: 30%"></div>
+                            <div class="wave-bar bg-purple" style="height: 60%"></div>
+                            <div class="wave-bar bg-purple" style="height: 100%"></div>
+                            <div class="wave-bar bg-purple" style="height: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="track-row">
+                    <div class="track-info">
+                        <div class="track-title-block">
+                            <span class="track-title">
+                                <span class="dot bg-blue"></span> Beat Guia (Bateria)
+                            </span>
+                            <span class="track-sub">MIDI VIRTUAL - STEREO</span>
+                        </div>
+                        <div class="track-buttons">
+                            <button onclick="toggleMute(this)" class="btn-track btn-mute">M</button>
+                            <button onclick="toggleSolo(this)" class="btn-track btn-solo">S</button>
+                        </div>
+                        <div class="vol-slider">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <input type="range" min="0" max="100" value="90">
+                        </div>
+                    </div>
+                    <div class="waveform-box">
+                        <div class="waveform-container">
+                            <div class="wave-bar bg-blue" style="height: 80%"></div>
+                            <div class="wave-bar bg-blue" style="height: 20%"></div>
+                            <div class="wave-bar bg-blue" style="height: 80%"></div>
+                            <div class="wave-bar bg-blue" style="height: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="track-row">
+                    <div class="track-info">
+                        <div class="track-title-block">
+                            <span class="track-title">
+                                <span class="dot bg-green"></span> Guitarra Acústica
+                            </span>
+                            <span class="track-sub">ENTRADA 2 - STEREO</span>
+                        </div>
+                        <div class="track-buttons">
+                            <button onclick="toggleMute(this)" class="btn-track btn-mute">M</button>
+                            <button onclick="toggleSolo(this)" class="btn-track btn-solo">S</button>
+                        </div>
+                        <div class="vol-slider">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <input type="range" min="0" max="100" value="65">
+                        </div>
+                    </div>
+                    <div class="waveform-box">
+                        <div class="waveform-container">
+                            <div class="wave-bar bg-green" style="height: 30%"></div>
+                            <div class="wave-bar bg-green" style="height: 50%"></div>
+                            <div class="wave-bar bg-green" style="height: 60%"></div>
+                            <div class="wave-bar bg-green" style="height: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PLAYBAR INFERIOR -->
+    <div class="bottom-player">
+        <div class="player-container">
+            <div class="player-timer-box">
+                <span id="player-timer" class="timer-digits">00:00:00</span>
+                <span id="player-status" class="timer-status">Parado</span>
+            </div>
+
+            <div class="player-controls">
+                <button onclick="rewindAudio()" class="btn-circle btn-dark">
+                    <i class="fa-solid fa-backward"></i>
+                </button>
+                <button id="btn-play" onclick="togglePlay()" class="btn-circle btn-play">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <button id="btn-rec" onclick="toggleRecord()" class="btn-circle btn-rec">
+                    <i class="fa-solid fa-circle"></i>
+                </button>
+                <button onclick="stopAudio()" class="btn-circle btn-dark">
+                    <i class="fa-solid fa-stop"></i>
+                </button>
+            </div>
+
+            <div class="master-vol">
+                <i class="fa-solid fa-volume-high"></i>
+                <input type="range" min="0" max="100" value="85">
+                <span>Master</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE EXPORTAÇÃO -->
+    <div id="export-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-area">
+                    <div class="modal-icon">
+                        <i class="fa-solid fa-file-audio"></i>
+                    </div>
+                    <div>
+                        <div class="modal-title">Exportar Projeto de Áudio</div>
+                        <div class="modal-sub">Configure os parâmetros de renderização final.</div>
+                    </div>
+                </div>
+                <button onclick="closeExportModal()" class="btn-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <span class="label">Formato de Saída:</span>
+                    <select id="export-format" class="select-input">
+                        <option value="wav">WAV - Uncompressed Audio (24-bit / 48kHz)</option>
+                        <option value="mp3">MP3 - High Quality (320 kbps)</option>
+                        <option value="flac">FLAC - Lossless Audio Codec</option>
+                    </select>
+                </div>
+
+                <div class="radio-box">
+                    <div class="label">Qualidade de Renderização:</div>
+                    <div class="radio-options">
+                        <label><input type="radio" name="quality" value="master" checked> Master Studio</label>
+                        <label><input type="radio" name="quality" value="draft"> Rascunho Rápido</label>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="normalize" checked>
+                    <span class="label-inline">Normalizar volume para -14 LUFS (Padrão Streaming)</span>
+                </div>
+
+                <div id="export-progress" class="progress-block hidden">
+                    <div class="progress-labels">
+                        <span>A renderizar áudio...</span>
+                        <span id="export-percent" class="text-purple">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="export-bar" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" onclick="closeExportModal()" class="btn-sec">Cancelar</button>
+                    <button id="btn-submit-export" onclick="handleExport()" class="btn-primary">
+                        <i class="fa-solid fa-download"></i> Descarregar Áudio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
